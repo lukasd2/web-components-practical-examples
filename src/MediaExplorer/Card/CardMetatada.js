@@ -8,6 +8,7 @@ export class CardMetadata extends LitElement {
             message: { type: String },
             cardTitle: { type: String },
             cardDescription: { type: String },
+            disabled: { type: Boolean },
         };
     }
 
@@ -28,11 +29,14 @@ export class CardMetadata extends LitElement {
 
     render() {
         return html`
-            <card-title .cardTitle=${this.cardTitle}></card-title>
-            <card-description
-                .cardDescription=${this.cardDescription}
-            ></card-description>
+            ${this.disabled
+                ? html` <card-title .cardTitle=${this.cardTitle}></card-title>
+                      <card-description
+                          .cardDescription=${this.cardDescription}
+                      ></card-description>`
+                : html``}
         `;
     }
 }
+
 customElements.define('card-metadata', CardMetadata);

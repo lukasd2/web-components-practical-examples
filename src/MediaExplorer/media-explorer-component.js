@@ -21,15 +21,13 @@ export class MediaExplorerComponent extends LitElement {
                 text-align: center;
                 border: 1px solid #1a2b42;
                 border-radius: 5px;
-
-                padding: 15px;
+                padding: 20px;
             }
         `;
     }
 
     constructor() {
         super();
-        this.message = 'Hello world';
         this.mediaData = [
             {
                 thumbnailUrl: 'https://picsum.photos/id/1/150/200',
@@ -59,10 +57,11 @@ export class MediaExplorerComponent extends LitElement {
     }
 
     render() {
-        return html`${this.message}
+        return html`
             <search-bar></search-bar>
             <filter-tab></filter-tab>
-            <card-component .mediaData="${this.mediaData}"></card-component> `;
+            <card-component .mediaData="${this.mediaData}"></card-component>
+        `;
     }
 }
 

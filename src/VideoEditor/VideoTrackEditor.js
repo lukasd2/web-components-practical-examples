@@ -25,11 +25,41 @@ export class VideoTrackEditor extends LitElement {
 
     constructor() {
         super();
-        this.message = 'I am video tracks';
+        this.message = 'Drag and Drop medias here!';
+    }
+
+    onDropMediaHandler(ev) {
+        ev.preventDefault();
+        const data = ev.dataTransfer.getData('text/plain');
+        const newDraggedElement = this.createNodeFromDraggedElement(data);
+
+        ev.target.appendChild(newDraggedElement);
+        return this.message;
+    }
+
+    createNodeFromDraggedElement(data) {
+        const createContainer = document.createElement('div');
+        const newContent = document.createTextNode(data);
+        createContainer.appendChild(newContent);
+        return createContainer;
+    }
+
+    onDragOverMediaHandler(ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = 'move';
     }
 
     render() {
-        return html` <div class="video-tracks">${this.message}</div> `;
+        return html`
+            <div
+                id="target"
+                @drop="${this.onDropMediaHandler}"
+                @dragover="${this.onDragOverMediaHandler}"
+                class="video-tracks"
+            >
+                ${this.message}
+            </div>
+        `;
     }
 }
 customElements.define('video-track-editor', VideoTrackEditor);

@@ -1,4 +1,5 @@
 import { LitElement, css, html } from 'lit-element';
+import { bulmaStyles } from '@granite-elements/granite-lit-bulma/granite-lit-bulma.js';
 
 export class SearchBar extends LitElement {
     static get properties() {
@@ -8,42 +9,37 @@ export class SearchBar extends LitElement {
     }
 
     static get styles() {
-        return css`
-            :host {
-                display: flex;
-                flex-direction: column;
-                height: 100px;
-                background-color: gainsboro;
-            }
-            .search__what {
-                margin-bottom: 25px;
-                text-align: center;
-                border-radius: 10px;
-            }
-
-            .search__search-btn {
-                width: 150px;
-                border-radius: 10px;
-                background-color: #18a0fb;
-                color: #fff;
-            }
-        `;
+        return [
+            bulmaStyles,
+            css`
+                :host {
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                    margin-bottom: 25px;
+                }
+                .search__media {
+                    text-align: center;
+                }
+            `,
+        ];
     }
 
     constructor() {
         super();
-        this.message = 'I am search';
+        this.message = 'This is a search Component';
     }
 
     render() {
-        return html`${this.message}
+        return html`
             <input
-                class="search__what input"
+                class="search__media input"
                 type="text"
                 name="mediasearch"
                 placeholder="Cerca nella libreria"
                 aria-label="Search"
-            /> `;
+            />
+        `;
     }
 }
 customElements.define('search-bar', SearchBar);

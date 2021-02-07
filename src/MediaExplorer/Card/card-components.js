@@ -16,6 +16,7 @@ export class CardComponent extends LitElement {
                 flex-direction: column;
             }
             .card-element {
+                overflow: hidden;
                 cursor: pointer;
             }
             .card-element:hover {
@@ -29,10 +30,16 @@ export class CardComponent extends LitElement {
         this.message = 'I am card';
     }
 
+    dragstartMediaHandler(ev) {
+        ev.dataTransfer.setData('text/plain', ev.target.cardTitle);
+    }
+
     render() {
         return html`${this.mediaData.map(
             media => html`
                 <card-element 
+                    @dragstart=${this.dragstartMediaHandler}
+                    draggable="true"
                     .mediaThumbnailUrl=${media.thumbnailUrl} 
                     .cardTitle=${media.mediaTitle}
                     .cardDescription=${media.mediaDescription} 

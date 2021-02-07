@@ -40,7 +40,7 @@ export class VideoPageComponent extends LitElement {
             main {
                 display: grid;
                 grid-template-columns: repeat(12, 1fr);
-                grid-gap: 50px;
+                grid-gap: 20px;
             }
 
             .media-explorer {

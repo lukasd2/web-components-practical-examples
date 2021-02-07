@@ -3,7 +3,7 @@ import { LitElement, css, html } from 'lit-element';
 export class FilterTab extends LitElement {
     static get properties() {
         return {
-            message: { type: String },
+            filters: { type: String },
         };
     }
 
@@ -12,8 +12,7 @@ export class FilterTab extends LitElement {
             :host {
                 display: flex;
                 flex-direction: column;
-                height: 100px;
-                background-color: lightblue;
+                height: 50px;
             }
             .filter-list {
                 list-style: none;
@@ -30,18 +29,21 @@ export class FilterTab extends LitElement {
 
     constructor() {
         super();
-        this.message = 'I am filter';
+        this.filters = ['Video', 'Audio', 'Images'];
     }
 
     render() {
-        return html`${this.message}
-            <div class="filter-container">
-                <ul class="filter-list">
-                    <li class="search-filter">1</li>
-                    <li class="search-filter">2</li>
-                    <li class="search-filter">3</li>
-                </ul>
-            </div> `;
+        return html` <div class="filter-container">
+            <ul class="filter-list">
+            ${this.filters.map(
+                filter => html`
+                <li class="search-filter">${filter}</li>
+                </div>
+            `
+            )}
+             </ul>
+            </div>
+        </div>`;
     }
 }
 customElements.define('filter-tab', FilterTab);
