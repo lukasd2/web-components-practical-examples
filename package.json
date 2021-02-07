@@ -1,0 +1,50 @@
+{
+    "devDependencies": {
+        "eslint": "^7.18.0",
+        "@open-wc/eslint-config": "^4.2.0",
+        "prettier": "^2.2.1",
+        "eslint-config-prettier": "^7.2.0",
+        "husky": "^4.3.8",
+        "lint-staged": "^10.5.3",
+        "@web/test-runner": "^0.12.7",
+        "@open-wc/testing": "^2.5.32",
+        "@web/dev-server": "^0.1.5"
+    },
+    "scripts": {
+        "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
+        "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
+        "test": "web-test-runner --coverage",
+        "test:watch": "web-test-runner --watch",
+        "start": "web-dev-server"
+    },
+    "name": "web-components-pratical-example",
+    "version": "0.0.0",
+    "description": "Webcomponent web-components-pratical-example following open-wc recommendations",
+    "author": "web-components-pratical-example",
+    "license": "MIT",
+    "dependencies": {
+        "lit-element": "^2.4.0",
+        "lit-html": "^1.3.0"
+    },
+    "eslintConfig": {
+        "extends": [
+            "@open-wc/eslint-config",
+            "eslint-config-prettier"
+        ]
+    },
+    "prettier": {
+        "singleQuote": true,
+        "arrowParens": "avoid"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.js": [
+            "eslint --fix",
+            "prettier --write"
+        ]
+    }
+}
