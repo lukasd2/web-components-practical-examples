@@ -78,7 +78,7 @@ export class CardElement extends LitElement {
                 @click="${this._handleClick}"
                 class="card-button button is-large"
             >
-                Hide Content
+                Hide Info
             </button>
         `;
     }
